@@ -1,6 +1,7 @@
 package entities.esercizio3;
 
 import exceptions.BancaException;
+import exceptions.NegativePrelievo;
 
 public class ContoCorrente {
     protected final int maxMovimenti = 50;
@@ -20,6 +21,9 @@ public class ContoCorrente {
 
     public void preleva(double x) {
         try {
+            if (x < 0) {
+                throw new NegativePrelievo("Non puoi prelevare in negativo");
+            }
             if (nMovimenti < maxMovimenti) {
                 saldo = saldo - x;
                 if (saldo < 0) {
@@ -30,7 +34,7 @@ public class ContoCorrente {
                 saldo = saldo - x - 0.50;
             }
             nMovimenti++;
-        } catch (BancaException e) {
+        } catch (BancaException | NegativePrelievo e) {
             System.out.println(e.getMessage());
         }
     }

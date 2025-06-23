@@ -7,7 +7,7 @@ public class Main {
         ContoCorrente mioConto = new ContoCorrente("Mario", 200);
         ContoOnline mioOnline = new ContoOnline("Luigi", 200, 100);
 
-        mioConto.preleva(100);
+        mioConto.preleva(-100);
         System.out.println(mioConto.restituisciSaldo());
         System.out.println(mioConto.getnMovimenti());
         mioConto.preleva(150);
